@@ -4,8 +4,12 @@
 
 # connect-gzip-static
 
-gzip static middleware for [connect][]: serves compressed files if they exist, falls through to
-connect-static if they don't
+Middleware for [connect][]: serves compressed files if they exist, falls through to connect-static
+if they don't, or if browser does not send 'Accept-Encoding' header.
+
+You should use `connect-gzip-static` if your build process already creates gzipped files. If you
+want to gzip your data on the fly use built-in [connect compress][] middleware. And if you want to
+gzip your files dynamically you may want to look up [connect gzip][].
 
 ## Installation
 
@@ -36,3 +40,5 @@ MIT
 
 [connect]: http://www.senchalabs.org/connect
 [connect static]: http://www.senchalabs.org/connect/static.html
+[connect compress]: http://www.senchalabs.org/connect/compress.html
+[connect gzip]: https://github.com/tikonen/connect-gzip
