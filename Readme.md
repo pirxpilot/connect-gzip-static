@@ -13,11 +13,26 @@ connect-static if they don't
 
 ## Options
 
+gzip-static is meant to be a drop in replacement for [connect static][] middleware. Use the same
+options as you would with [connect static][].
+
 
 ## Usage
+
+```javascript
+var gzipStatic = require('connect-gzip-static');
+var oneDay = 86400000;
+
+connect()
+  .use(gzipStaticconnect.static(__dirname + '/public'))
+
+connect()
+  .use(gzipStatic(__dirname + '/public', { maxAge: oneDay }))
+```
 
 # License
 
 MIT
 
 [connect]: http://www.senchalabs.org/connect
+[connect static]: http://www.senchalabs.org/connect/static.html

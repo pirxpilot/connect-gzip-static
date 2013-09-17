@@ -21,6 +21,11 @@
   "bugs": {
     "url": "https://github.com/code42day/connect-gzip-static/issues"
   },
+  "dependencies": {
+    "debug": "~0",
+    "send": "~0",
+    "connect": ">=2"
+  },
   "devDependencies": {
     "jshint": "~2.1.10",
     "mocha": "~1.13.0"
