@@ -24,7 +24,7 @@ var gzipStatic = require('connect-gzip-static');
 var oneDay = 86400000;
 
 connect()
-  .use(gzipStaticconnect.static(__dirname + '/public'))
+  .use(gzipStatic(__dirname + '/public'))
 
 connect()
   .use(gzipStatic(__dirname + '/public', { maxAge: oneDay }))
