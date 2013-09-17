@@ -27,7 +27,8 @@
     "connect": ">=2"
   },
   "devDependencies": {
-    "jshint": "~2.1.10",
-    "mocha": "~1.13.0"
+    "jshint": "~2",
+    "mocha": "~1",
+    "should": "~1"
   }
 }
