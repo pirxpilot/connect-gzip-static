@@ -1,6 +1,6 @@
 {
   "name": "connect-gzip-static",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "gzip static middleware for connect - serves compressed files if they exist, falls through to connect-static if they don't",
   "main": "index.js",
   "scripts": {

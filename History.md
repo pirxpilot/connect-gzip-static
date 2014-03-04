@@ -1,4 +1,11 @@
 
+0.2.0 / 2014-03-04
+==================
+
+ * support `index` option properly
+ * Clarify usage in Readme
+ * Tests added
+
 0.1.1 / 2013-09-17 
 ==================
 
