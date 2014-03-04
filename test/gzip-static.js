@@ -2,19 +2,22 @@ var gzipStatic = require('..');
 
 var connect = require('connect');
 var fixtures = __dirname + '/fixtures';
-var app = connect();
 
-/* global describe, it */
-
-
-app.use(gzipStatic(fixtures));
-
-app.use(function(req, res){
-  res.statusCode = 404;
-  res.end('sorry!');
-});
+/* global describe, before, it */
 
 describe('gzipStatic', function(){
+  var app;
+
+  before(function() {
+    app = connect();
+    app.use(gzipStatic(fixtures));
+
+    app.use(function(req, res){
+      res.statusCode = 404;
+      res.end('sorry!');
+    });
+  });
+
   it('should serve static files', function(done){
     app.request()
     .get('/style.css')
@@ -25,6 +28,19 @@ describe('gzipStatic', function(){
     app.request()
     .get('/style.css')
     .expect('Content-Type', 'text/css; charset=UTF-8', done);
+  });
+
+  it('should send compressed index.html asked for /', function(done) {
+    app.request()
+      .get('/subdir/')
+      .set('Accept-Encoding', 'gzip')
+      .expect('compressed HTML', done);
+  });
+
+  it('should send uncompressed index.html asked for /', function(done) {
+    app.request()
+      .get('/subdir/')
+      .expect('<p>Hello</p>', done);
   });
 
   it('should default max-age=0', function(done){
@@ -74,4 +90,34 @@ describe('gzipStatic', function(){
     .expect(404, done);
   });
 
+});
+
+
+describe('gzipStatic with options', function () {
+  var app;
+
+  before(function() {
+    app = connect();
+    app.use(gzipStatic(fixtures, {
+      index: 'print.css'
+    }));
+
+    app.use(function(req, res){
+      res.statusCode = 404;
+      res.end('sorry!');
+    });
+  });
+
+  it('should send compressed print.css asked for /', function(done) {
+    app.request()
+      .get('/')
+      .set('Accept-Encoding', 'gzip')
+      .expect('compressed', done);
+  });
+
+  it('should send uncompressed print.css asked for /', function(done) {
+    app.request()
+      .get('/')
+      .expect('body{color:"green";}', done);
+  });
 });
