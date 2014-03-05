@@ -30,14 +30,21 @@ describe('gzipStatic', function(){
     .expect('Content-Type', 'text/css; charset=UTF-8', done);
   });
 
-  it('should send compressed index.html asked for /', function(done) {
+  it('should send compressed index.html when asked for /', function(done) {
     app.request()
       .get('/subdir/')
       .set('Accept-Encoding', 'gzip')
       .expect('compressed HTML', done);
   });
 
-  it('should send uncompressed index.html asked for /', function(done) {
+  it('should set Content-Type when asked for /', function(done){
+    app.request()
+      .set('Accept-Encoding', 'gzip')
+      .get('/subdir/')
+      .expect('Content-Type', 'text/html; charset=UTF-8', done);
+  });
+
+  it('should send uncompressed index.html when asked for /', function(done) {
     app.request()
       .get('/subdir/')
       .expect('<p>Hello</p>', done);
@@ -108,11 +115,18 @@ describe('gzipStatic with options', function () {
     });
   });
 
-  it('should send compressed print.css asked for /', function(done) {
+  it('should send compressed configured index when asked for /', function(done) {
     app.request()
       .get('/')
       .set('Accept-Encoding', 'gzip')
       .expect('compressed', done);
+  });
+
+  it('should set Content-Type for for configured index when asked for /', function(done) {
+    app.request()
+      .get('/')
+      .set('Accept-Encoding', 'gzip')
+      .expect('Content-Type', 'text/css; charset=UTF-8', done);
   });
 
   it('should send uncompressed print.css asked for /', function(done) {
