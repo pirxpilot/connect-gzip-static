@@ -1,6 +1,6 @@
-[![Build Status](https://secure.travis-ci.org/code42day/connect-gzip-static.png)](http://travis-ci.org/code42day/connect-gzip-static)
-[![Dependency Status](https://gemnasium.com/code42day/connect-gzip-static.png)](https://gemnasium.com/code42day/connect-gzip-static)
-[![NPM version](https://badge.fury.io/js/connect-gzip-static.png)](http://badge.fury.io/js/connect-gzip-static)
+[![Build Status](https://img.shields.io/travis/code42day/connect-gzip-static.svg)](http://travis-ci.org/code42day/connect-gzip-static)
+[![Dependency Status](https://img.shields.io/gemnasium/code42day/connect-gzip-static.svg)](https://gemnasium.com/code42day/connect-gzip-static)
+[![NPM version](https://img.shields.io/npm/v/connect-gzip-static.svg)](https://www.npmjs.org/package/connect-gzip-static)
 
 # connect-gzip-static
 
