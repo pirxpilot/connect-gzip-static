@@ -25,7 +25,8 @@
     "debug": "~0",
     "send": "~0",
     "parseurl": "~1",
-    "serve-static": "~1"
+    "serve-static": "~1",
+    "find": "^0.1.5"
   },
   "devDependencies": {
     "connect": ">=2",
