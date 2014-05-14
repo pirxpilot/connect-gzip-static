@@ -24,9 +24,11 @@
   "dependencies": {
     "debug": "~0",
     "send": "~0",
-    "connect": ">=2"
+    "parseurl": "~1",
+    "serve-static": "~1"
   },
   "devDependencies": {
+    "connect": ">=2",
     "jshint": "~2",
     "mocha": "~1",
     "should": "~1"
