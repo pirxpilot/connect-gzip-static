@@ -1,4 +1,10 @@
 
+0.3.0 / 2014-05-13
+==================
+
+ * check for .gzip presence on middleware init
+ * use serve-static middleware and parseurl
+
 0.2.1 / 2014-03-05
 ==================
 
