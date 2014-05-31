@@ -34,6 +34,10 @@ connect()
   .use(gzipStatic(__dirname + '/public', { maxAge: oneDay }))
 ```
 
+## Debugging
+
+This project uses [debug module](https://github.com/visionmedia/debug). To enable the debug log, just set the debug enviromental variable: `DEBUG="connect:gzip-static"`
+
 # License
 
 MIT
