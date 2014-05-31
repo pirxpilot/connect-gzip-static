@@ -36,7 +36,7 @@ connect()
 
 ## How it works
 
-Basically it will first finds all the files in the given directory ending with `.gz` in their name. For any request, this module will check the file name requested without `.gz` against the files it had found before, if it finds it, it will serve that, else it will pass the request to connect static.
+`gzip-static` starts by locating all compressed files (ie. _files with `.gz` extension_) in `root` directory. All `HTTP GET` and `HTTP HEAD` requests with `Accept-Encoding` header set to `gzip` are checked against the list of compressed files and, if possible, fulfilled by returning the compressed versions. If compressed version is not found or if the request does not have an appropriate `Accept-Encoding` header, the request is processed in the same way as standard `static` middleware would handle it.
 
 # License
 
