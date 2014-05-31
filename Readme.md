@@ -34,6 +34,10 @@ connect()
   .use(gzipStatic(__dirname + '/public', { maxAge: oneDay }))
 ```
 
+## How it works
+
+Basically it will first finds all the files in the given directory ending with `.gz` in their name. For any request, this module will check the file name requested without `.gz` against the files it had found before, if it finds it, it will serve that, else it will pass the request to connect static.
+
 # License
 
 MIT
