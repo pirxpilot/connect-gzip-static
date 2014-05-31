@@ -34,6 +34,10 @@ connect()
   .use(gzipStatic(__dirname + '/public', { maxAge: oneDay }))
 ```
 
+## How it works
+
+`gzip-static` starts by locating all compressed files (ie. _files with `.gz` extension_) in `root` directory. All `HTTP GET` and `HTTP HEAD` requests with `Accept-Encoding` header set to `gzip` are checked against the list of compressed files and, if possible, fulfilled by returning the compressed versions. If compressed version is not found or if the request does not have an appropriate `Accept-Encoding` header, the request is processed in the same way as standard `static` middleware would handle it.
+
 ## Debugging
 
 This project uses [debug module](https://github.com/visionmedia/debug). To enable the debug log, just set the debug enviromental variable: `DEBUG="connect:gzip-static"`
