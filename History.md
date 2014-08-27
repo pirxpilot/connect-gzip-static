@@ -1,4 +1,10 @@
 
+0.4.0 / 2014-08-27
+==================
+
+ * options.hidden now options.dotfiles
+ * Readme updates: debugging and "How it works" section
+
 0.3.1 / 2014-05-13
 ==================
 
