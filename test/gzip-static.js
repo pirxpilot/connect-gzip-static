@@ -1,6 +1,8 @@
 var gzipStatic = require('..');
 
 var connect = require('connect');
+var request = require('./support/http');
+
 var fixtures = __dirname + '/fixtures';
 
 /* global describe, before, it */
@@ -19,79 +21,79 @@ describe('gzipStatic', function(){
   });
 
   it('should serve static files', function(done){
-    app.request()
+    request(app)
     .get('/style.css')
     .expect('body{color:"red";}', done);
   });
 
   it('should set Content-Type', function(done){
-    app.request()
+    request(app)
     .get('/style.css')
     .expect('Content-Type', 'text/css; charset=UTF-8', done);
   });
 
   it('should send compressed index.html when asked for /', function(done) {
-    app.request()
+    request(app)
       .get('/subdir/')
       .set('Accept-Encoding', 'gzip')
       .expect('compressed HTML', done);
   });
 
   it('should set Content-Type when asked for /', function(done){
-    app.request()
+    request(app)
       .set('Accept-Encoding', 'gzip')
       .get('/subdir/')
       .expect('Content-Type', 'text/html; charset=UTF-8', done);
   });
 
   it('should send uncompressed index.html when asked for /', function(done) {
-    app.request()
+    request(app)
       .get('/subdir/')
       .expect('<p>Hello</p>', done);
   });
 
   it('should default max-age=0', function(done){
-    app.request()
+    request(app)
     .get('/style.css')
     .expect('Cache-Control', 'public, max-age=0', done);
   });
 
   it('should serve uncompressed files unless requested', function(done){
-    app.request()
+    request(app)
     .get('/print.css')
     .expect('body{color:"green";}', done);
   });
 
   it('should serve compressed files when requested', function(done){
-    app.request()
+    request(app)
     .set('Accept-Encoding', 'gzip')
     .get('/print.css')
     .expect('compressed', done);
   });
 
   it('should set Content-Type for compressed files', function(done){
-    app.request()
+    request(app)
     .set('Accept-Encoding', 'gzip')
     .get('/print.css')
     .expect('Content-Type', 'text/css; charset=UTF-8', done);
   });
 
   it('should set Vary for compressed files', function(done){
-    app.request()
+    request(app)
     .set('Accept-Encoding', 'gzip')
     .get('/print.css')
     .expect('Vary', 'Accept-Encoding', done);
   });
 
   it('should set Content-Encoding for compressed files', function(done){
-    app.request()
+    request(app)
     .set('Accept-Encoding', 'gzip')
     .get('/print.css')
     .expect('Content-Encoding', 'gzip', done);
   });
 
   it('should ignore POST requests', function(done){
-    app.request()
+    request(app)
     .set('Accept-Encoding', 'gzip')
     .post('/print.css')
     .expect(404, done);
@@ -116,21 +118,21 @@ describe('gzipStatic with options', function () {
   });
 
   it('should send compressed configured index when asked for /', function(done) {
-    app.request()
+    request(app)
       .get('/')
       .set('Accept-Encoding', 'gzip')
       .expect('compressed', done);
   });
 
   it('should set Content-Type for for configured index when asked for /', function(done) {
-    app.request()
+    request(app)
       .get('/')
       .set('Accept-Encoding', 'gzip')
       .expect('Content-Type', 'text/css; charset=UTF-8', done);
   });
 
   it('should send uncompressed print.css asked for /', function(done) {
-    app.request()
+    request(app)
       .get('/')
       .expect('body{color:"green";}', done);
   });
