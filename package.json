@@ -22,7 +22,7 @@
     "url": "https://github.com/code42day/connect-gzip-static/issues"
   },
   "dependencies": {
-    "debug": "~0",
+    "debug": "~2",
     "send": "~0",
     "parseurl": "~1",
     "serve-static": "~1",
