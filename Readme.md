@@ -32,6 +32,10 @@ connect()
 
 connect()
   .use(gzipStatic(__dirname + '/public', { maxAge: oneDay }))
+
+// Do NOT generate files cache, it will check if the file exists before serving it.
+connect()
+  .use(gzipStatic(__dirname + '/public', { gzCached: false }))
 ```
 
 ## How it works
