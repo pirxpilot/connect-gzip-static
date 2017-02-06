@@ -23,15 +23,15 @@
   },
   "dependencies": {
     "debug": "~2",
-    "send": "~0",
+    "find": "~0",
     "parseurl": "~1",
-    "serve-static": "~1",
-    "find": "~0"
+    "send": "~0",
+    "serve-static": "~1"
   },
   "devDependencies": {
     "connect": ">=2",
     "jshint": "~2",
-    "mocha": "~1",
-    "should": "~1"
+    "mocha": "~3",
+    "should": "~11"
   }
 }
