@@ -1,4 +1,10 @@
 
+2.0.0 / 2017-02-06
+==================
+
+ * add support for brotli
+ * upgrade mocha and should
+
 1.0.0 / 2014-10-18
 ==================
 
