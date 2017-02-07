@@ -1,7 +1,7 @@
 {
   "name": "connect-gzip-static",
   "version": "1.0.0",
-  "description": "gzip static middleware for connect - serves compressed files if they exist, falls through to connect-static if they don't",
+  "description": "gzip/brotli static middleware for connect - serves compressed files if they exist, falls through to connect-static if they don't",
   "main": "index.js",
   "scripts": {
     "test": "make lint test"
@@ -14,6 +14,7 @@
     "connect",
     "middleware",
     "gzip",
+    "brotli",
     "compress"
   ],
   "author": "Damian Krzeminski <pirxpilot@code42day.com>",
