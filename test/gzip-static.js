@@ -68,7 +68,21 @@ describe('gzipStatic', function(){
     request(app)
     .set('Accept-Encoding', 'gzip')
     .get('/print.css')
-    .expect('compressed', done);
+    .expect('gzip compressed', done);
+  });
+
+  it('should serve brotli compressed files when requested both gzip and brotli', function(done){
+    request(app)
+    .set('Accept-Encoding', 'gzip, br')
+    .get('/print.css')
+    .expect('brotli compressed', done);
+  });
+
+  it('should serve gzip compressed files when requested both gzip and brotli and only .gz is available', function(done){
+    request(app)
+    .set('Accept-Encoding', 'gzip, br')
+    .get('/code.txt')
+    .expect('gzip code', done);
   });
 
   it('should set Content-Type for compressed files', function(done){
@@ -121,7 +135,14 @@ describe('gzipStatic with options', function () {
     request(app)
       .get('/')
       .set('Accept-Encoding', 'gzip')
-      .expect('compressed', done);
+      .expect('gzip compressed', done);
+  });
+
+  it('should send compressed configured index when asked for /', function(done) {
+    request(app)
+      .get('/')
+      .set('Accept-Encoding', 'gzip, deflate, sdch, br')
+      .expect('brotli compressed', done);
   });
 
   it('should set Content-Type for for configured index when asked for /', function(done) {
