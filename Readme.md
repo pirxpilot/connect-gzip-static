@@ -52,7 +52,7 @@ This project uses [debug] moudle. To enable the debug log, just set the debug en
 
 # License
 
-MIT
+MIT © [Damian Krzeminski](https://pirxpilot.me)
 
 [brotli]: https://en.wikipedia.org/wiki/Brotli
 [debug]: https://github.com/visionmedia/debug
@@ -64,8 +64,8 @@ MIT
 [npm-image]: https://img.shields.io/npm/v/connect-gzip-static.svg
 [npm-url]: https://npmjs.org/package/connect-gzip-static
 
-[travis-url]: https://travis-ci.org/code42day/connect-gzip-static
-[travis-image]: https://img.shields.io/travis/code42day/connect-gzip-static.svg
+[travis-url]: https://travis-ci.org/pirxpilot/connect-gzip-static
+[travis-image]: https://img.shields.io/travis/pirxpilot/connect-gzip-static.svg
 
-[gemnasium-image]: https://img.shields.io/gemnasium/code42day/connect-gzip-static.svg
-[gemnasium-url]: https://gemnasium.com/code42day/connect-gzip-static
+[gemnasium-image]: https://img.shields.io/gemnasium/pirxpilot/connect-gzip-static.svg
+[gemnasium-url]: https://gemnasium.com/pirxpilot/connect-gzip-static

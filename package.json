@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:code42day/connect-gzip-static.git"
+    "url": "git@github.com:pirxpilot/connect-gzip-static.git"
   },
   "keywords": [
     "connect",
@@ -17,11 +17,8 @@
     "brotli",
     "compress"
   ],
-  "author": "Damian Krzeminski <pirxpilot@code42day.com>",
+  "author": "Damian Krzeminski <pirxpilot@furkot.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/code42day/connect-gzip-static/issues"
-  },
   "dependencies": {
     "debug": "~2",
     "find": "~0",
