@@ -1,4 +1,10 @@
 
+2.1.0 / 2017-08-26
+==================
+
+ * fix support for `etag`, `last-modified`, `cache-control`
+ * fix support for setHeaders options
+
 2.0.1 / 2017-02-18
 ==================
 
