@@ -58,6 +58,18 @@ describe('gzipStatic', function(){
     .expect('Cache-Control', 'public, max-age=0', done);
   });
 
+  it('should set ETag', function(done){
+    request(app)
+    .get('/style.css')
+    .expect('ETag', 'W/"12-1412c98305f"', done);
+  });
+
+  it('should set Last-Modified', function(done){
+    request(app)
+    .get('/style.css')
+    .expect('Last-Modified', 'Tue, 17 Sep 2013 15:44:33 GMT', done);
+  });
+
   it('should serve uncompressed files unless requested', function(done){
     request(app)
     .get('/print.css')
@@ -123,7 +135,10 @@ describe('gzipStatic with options', function () {
     app = connect();
     app.use(gzipStatic(fixtures, {
       index: 'print.css',
-      setHeaders: setHeaders
+      setHeaders: setHeaders,
+      etag: false,
+      lastModified: false,
+      cacheControl: false
     }));
 
     app.use(function(req, res){
@@ -169,4 +184,17 @@ describe('gzipStatic with options', function () {
       .set('Accept-Encoding', 'gzip')
       .expect('X-Testing', 'bongo', done);
   });
+
+  it('should respect custom options', function(done) {
+    request(app)
+      .get('/')
+      .set('Accept-Encoding', 'gzip')
+      .end(function(res) {
+        res.headers.should.not.have.property('etag');
+        res.headers.should.not.have.property('last-modified');
+        res.headers.should.not.have.property('cache-control');
+        done();
+      });
+  });
+
 });
