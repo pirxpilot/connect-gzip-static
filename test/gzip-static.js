@@ -122,13 +122,18 @@ describe('gzipStatic with options', function () {
   before(function() {
     app = connect();
     app.use(gzipStatic(fixtures, {
-      index: 'print.css'
+      index: 'print.css',
+      setHeaders: setHeaders
     }));
 
     app.use(function(req, res){
       res.statusCode = 404;
       res.end('sorry!');
     });
+
+    function setHeaders(res) {
+      res.setHeader('X-Testing', 'bongo');
+    }
   });
 
   it('should send compressed configured index when asked for /', function(done) {
@@ -156,5 +161,12 @@ describe('gzipStatic with options', function () {
     request(app)
       .get('/')
       .expect('body{color:"green";}', done);
+  });
+
+  it('should set custom headers when requested', function(done) {
+    request(app)
+      .get('/')
+      .set('Accept-Encoding', 'gzip')
+      .expect('X-Testing', 'bongo', done);
   });
 });
