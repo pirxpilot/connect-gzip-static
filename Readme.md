@@ -8,7 +8,7 @@ Middleware for [connect]: serves compressed files if they exist, falls through t
 if they don't, or if browser does not send 'Accept-Encoding' header.
 
 You should use `connect-gzip-static` if your build process already creates compressed (using gzip or
-[brotli]) files. If you want to compress your data on the fly use built-in [connect compress]
+[brotli]) files. If you want to compress your data on the fly use [compression]
 middleware. And if you want to compress your files dynamically you may want to look up [connect
 gzip].
 
@@ -46,7 +46,7 @@ handle it.
 
 ## Debugging
 
-This project uses [debug] moudle. To enable the debug log, just set the debug enviromental variable:
+This project uses [debug] module. To enable the debug log, just set the debug enviromental variable:
 
     DEBUG="connect:gzip-static"
 
@@ -56,9 +56,9 @@ MIT © [Damian Krzeminski](https://pirxpilot.me)
 
 [brotli]: https://en.wikipedia.org/wiki/Brotli
 [debug]: https://github.com/visionmedia/debug
-[connect]: http://www.senchalabs.org/connect
-[connect static]: http://www.senchalabs.org/connect/static.html
-[connect compress]: http://www.senchalabs.org/connect/compress.html
+[connect]: https://github.com/senchalabs/connect
+[connect static]: https://github.com/expressjs
+[compression]: https://github.com/expressjs/compression
 [connect gzip]: https://github.com/tikonen/connect-gzip
 
 [npm-image]: https://img.shields.io/npm/v/connect-gzip-static.svg
