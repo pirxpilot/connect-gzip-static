@@ -58,16 +58,15 @@ describe('gzipStatic', function(){
     .expect('Cache-Control', 'public, max-age=0', done);
   });
 
-  it('should set ETag', function(done){
+  it('should set ETag and Last-Modified', function(done){
     request(app)
-    .get('/style.css')
-    .expect('ETag', 'W/"12-1412c98305f"', done);
-  });
-
-  it('should set Last-Modified', function(done){
-    request(app)
-    .get('/style.css')
-    .expect('Last-Modified', 'Tue, 17 Sep 2013 15:44:33 GMT', done);
+      .get('/print.css')
+      .set('Accept-Encoding', 'gzip')
+      .end(function(res) {
+        res.headers.should.have.property('etag');
+        res.headers.should.have.property('last-modified');
+        done();
+      });
   });
 
   it('should serve uncompressed files unless requested', function(done){
