@@ -1,11 +1,11 @@
-
 /**
  * Module dependencies.
  */
 
-var EventEmitter = require('events').EventEmitter
-  , methods = ['get', 'post', 'put', 'delete', 'head']
-  , http = require('http');
+const EventEmitter = require('events').EventEmitter;
+
+const methods = ['get', 'post', 'put', 'delete', 'head'];
+const http = require('http');
 
 module.exports = request;
 
@@ -14,13 +14,13 @@ function request(app) {
 }
 
 function Request(app) {
-  var self = this;
+  const self = this;
   this.data = [];
   this.header = {};
   this.app = app;
   if (!this.server) {
     this.server = http.Server(app);
-    this.server.listen(0, function(){
+    this.server.listen(0, function () {
       self.addr = self.server.address();
       self.listening = true;
     });
@@ -33,31 +33,31 @@ function Request(app) {
 
 Request.prototype.__proto__ = EventEmitter.prototype;
 
-methods.forEach(function(method){
-  Request.prototype[method] = function(path){
+methods.forEach(function (method) {
+  Request.prototype[method] = function (path) {
     return this.request(method, path);
   };
 });
 
-Request.prototype.set = function(field, val){
+Request.prototype.set = function (field, val) {
   this.header[field] = val;
   return this;
 };
 
-Request.prototype.write = function(data){
+Request.prototype.write = function (data) {
   this.data.push(data);
   return this;
 };
 
-Request.prototype.request = function(method, path){
+Request.prototype.request = function (method, path) {
   this.method = method;
   this.path = path;
   return this;
 };
 
-Request.prototype.expect = function(body, fn){
-  var args = arguments;
-  this.end(function(res){
+Request.prototype.expect = function (body, fn) {
+  const args = arguments;
+  this.end(function (res) {
     switch (args.length) {
       case 3:
         res.headers.should.have.property(body.toLowerCase(), args[1]);
@@ -74,27 +74,27 @@ Request.prototype.expect = function(body, fn){
   });
 };
 
-Request.prototype.end = function(fn){
-  var self = this;
+Request.prototype.end = function (fn) {
+  const self = this;
 
   if (this.listening) {
-    var req = http.request({
-        method: this.method
-      , port: this.addr.port
-      , host: this.addr.address
-      , path: this.path
-      , headers: this.header
+    const req = http.request({
+      method: this.method,
+      port: this.addr.port,
+      host: this.addr.address,
+      path: this.path,
+      headers: this.header
     });
 
-    this.data.forEach(function(chunk){
+    this.data.forEach(function (chunk) {
       req.write(chunk);
     });
 
-    req.on('response', function(res){
-      var buf = '';
+    req.on('response', function (res) {
+      let buf = '';
       res.setEncoding('utf8');
-      res.on('data', function(chunk){ buf += chunk; });
-      res.on('end', function(){
+      res.on('data', function (chunk) { buf += chunk; });
+      res.on('end', function () {
         res.body = buf;
         fn(res);
       });
@@ -102,7 +102,7 @@ Request.prototype.end = function(fn){
 
     req.end();
   } else {
-    this.server.on('listening', function(){
+    this.server.on('listening', function () {
       self.end(fn);
     });
   }
