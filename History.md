@@ -1,4 +1,10 @@
 
+3.0.0 / 2022-05-14
+==================
+
+ * use async readdir when creating cache
+ * rewrite in modern javascript
+
 2.1.1 / 2017-08-26
 ==================
 
