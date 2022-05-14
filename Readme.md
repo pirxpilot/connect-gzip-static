@@ -1,6 +1,6 @@
 [![NPM version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Dependency Status][gemnasium-image]][gemnasium-url]
+[![Build Status][build-image]][build-url]
+[![Dependency Status][deps-image]][deps-url]
 
 # connect-gzip-static
 
@@ -64,8 +64,8 @@ MIT © [Damian Krzeminski](https://pirxpilot.me)
 [npm-image]: https://img.shields.io/npm/v/connect-gzip-static.svg
 [npm-url]: https://npmjs.org/package/connect-gzip-static
 
-[travis-url]: https://travis-ci.org/pirxpilot/connect-gzip-static
-[travis-image]: https://img.shields.io/travis/pirxpilot/connect-gzip-static.svg
-
-[gemnasium-image]: https://img.shields.io/gemnasium/pirxpilot/connect-gzip-static.svg
-[gemnasium-url]: https://gemnasium.com/pirxpilot/connect-gzip-static
+[build-url]: https://github.com/pirxpilot/connect-gzip-static/actions/workflows/check.yaml
+[build-image]: https://img.shields.io/github/workflow/status/pirxpilot/connect-gzip-static/check
+ 
+[deps-image]: https://img.shields.io/librariesio/release/npm/connect-gzip-static
+[deps-url]: https://libraries.io/npm/connect-gzip-static
