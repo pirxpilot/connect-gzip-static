@@ -20,8 +20,8 @@
   "author": "Damian Krzeminski <pirxpilot@furkot.com>",
   "license": "MIT",
   "dependencies": {
-    "debug": "~2",
-    "find": "~0",
+    "@folder/readdir": "^3.1.0",
+    "debug": "~2||~3||~4",
     "parseurl": "~1",
     "send": "~0",
     "serve-static": "~1"
@@ -29,8 +29,8 @@
   "devDependencies": {
     "connect": ">=2",
     "jshint": "~2",
-    "mocha": "~3",
-    "should": "~11"
+    "mocha": "~10",
+    "should": "~13"
   },
   "files": [
     "index.js",

@@ -1,15 +1,7 @@
 {
   "undef": true,
   "unused": true,
-  "laxbreak": true,
-  "laxcomma": true,
   "proto": true,
-  "globals": {
-    "console": false,
-    "exports": false,
-    "process": false,
-    "require": false,
-    "module": false,
-    "__dirname": false
-  }
+  "node": true,
+  "esversion": 11
 }
