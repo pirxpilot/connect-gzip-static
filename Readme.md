@@ -61,11 +61,11 @@ MIT © [Damian Krzeminski](https://pirxpilot.me)
 [compression]: https://github.com/expressjs/compression
 [connect gzip]: https://github.com/tikonen/connect-gzip
 
-[npm-image]: https://img.shields.io/npm/v/connect-gzip-static.svg
+[npm-image]: https://img.shields.io/npm/v/connect-gzip-static
 [npm-url]: https://npmjs.org/package/connect-gzip-static
 
 [build-url]: https://github.com/pirxpilot/connect-gzip-static/actions/workflows/check.yaml
-[build-image]: https://img.shields.io/github/workflow/status/pirxpilot/connect-gzip-static/check
+[build-image]: https://img.shields.io/github/actions/workflow/status/pirxpilot/connect-gzip-static/check.yaml?branch=main
  
 [deps-image]: https://img.shields.io/librariesio/release/npm/connect-gzip-static
 [deps-url]: https://libraries.io/npm/connect-gzip-static
