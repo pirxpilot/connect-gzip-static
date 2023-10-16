@@ -1,3 +1,5 @@
+const test = require('node:test');
+
 const gzipStatic = require('..');
 
 const connect = require('connect');
@@ -5,12 +7,10 @@ const request = require('./support/http');
 
 const fixtures = __dirname + '/fixtures';
 
-/* global describe, before, it */
-
-describe('gzipStatic', function () {
+test('gzipStatic', async function (t) {
   let app;
 
-  before(function () {
+  t.before(function () {
     app = connect();
     app.use(gzipStatic(fixtures));
 
@@ -20,46 +20,50 @@ describe('gzipStatic', function () {
     });
   });
 
-  it('should serve static files', function (done) {
-    request(app)
+  t.afterEach(function (t, done) {
+    t.request.close(done);
+  });
+
+  await t.test('should serve static files', function (t, done) {
+    t.request = request(app)
       .get('/style.css')
       .expect('body{color:"red";}', done);
   });
 
-  it('should set Content-Type', function (done) {
-    request(app)
+  await t.test('should set Content-Type', function (t, done) {
+    t.request = request(app)
       .get('/style.css')
       .expect('Content-Type', 'text/css; charset=UTF-8', done);
   });
 
-  it('should send compressed index.html when asked for /', function (done) {
-    request(app)
+  await t.test('should send compressed index.html when asked for /', function (t, done) {
+    t.request = request(app)
       .get('/subdir/')
       .set('Accept-Encoding', 'gzip')
       .expect('compressed HTML', done);
   });
 
-  it('should set Content-Type when asked for /', function (done) {
-    request(app)
+  await t.test('should set Content-Type when asked for /', function (t, done) {
+    t.request = request(app)
       .set('Accept-Encoding', 'gzip')
       .get('/subdir/')
       .expect('Content-Type', 'text/html; charset=UTF-8', done);
   });
 
-  it('should send uncompressed index.html when asked for /', function (done) {
-    request(app)
+  await t.test('should send uncompressed index.html when asked for /', function (t, done) {
+    t.request = request(app)
       .get('/subdir/')
       .expect('<p>Hello</p>', done);
   });
 
-  it('should default max-age=0', function (done) {
-    request(app)
+  await t.test('should default max-age=0', function (t, done) {
+    t.request = request(app)
       .get('/style.css')
       .expect('Cache-Control', 'public, max-age=0', done);
   });
 
-  it('should set ETag and Last-Modified', function (done) {
-    request(app)
+  await t.test('should set ETag and Last-Modified', function (t, done) {
+    t.request = request(app)
       .get('/print.css')
       .set('Accept-Encoding', 'gzip')
       .end(function (res) {
@@ -69,56 +73,56 @@ describe('gzipStatic', function () {
       });
   });
 
-  it('should serve uncompressed files unless requested', function (done) {
-    request(app)
+  await t.test('should serve uncompressed files unless requested', function (t, done) {
+    t.request = request(app)
       .get('/print.css')
       .expect('body{color:"green";}', done);
   });
 
-  it('should serve compressed files when requested', function (done) {
-    request(app)
+  await t.test('should serve compressed files when requested', function (t, done) {
+    t.request = request(app)
       .set('Accept-Encoding', 'gzip')
       .get('/print.css')
       .expect('gzip compressed', done);
   });
 
-  it('should serve brotli compressed files when requested both gzip and brotli', function (done) {
-    request(app)
+  await t.test('should serve brotli compressed files when requested both gzip and brotli', function (t, done) {
+    t.request = request(app)
       .set('Accept-Encoding', 'gzip, br')
       .get('/print.css')
       .expect('brotli compressed', done);
   });
 
-  it('should serve gzip compressed files when requested both gzip and brotli and only .gz is available', function (done) {
-    request(app)
+  await t.test('should serve gzip compressed files when requested both gzip and brotli and only .gz is available', function (t, done) {
+    t.request = request(app)
       .set('Accept-Encoding', 'gzip, br')
       .get('/code.txt')
       .expect('gzip code', done);
   });
 
-  it('should set Content-Type for compressed files', function (done) {
-    request(app)
+  await t.test('should set Content-Type for compressed files', function (t, done) {
+    t.request = request(app)
       .set('Accept-Encoding', 'gzip')
       .get('/print.css')
       .expect('Content-Type', 'text/css; charset=UTF-8', done);
   });
 
-  it('should set Vary for compressed files', function (done) {
-    request(app)
+  await t.test('should set Vary for compressed files', function (t, done) {
+    t.request = request(app)
       .set('Accept-Encoding', 'gzip')
       .get('/print.css')
       .expect('Vary', 'Accept-Encoding', done);
   });
 
-  it('should set Content-Encoding for compressed files', function (done) {
-    request(app)
+  await t.test('should set Content-Encoding for compressed files', function (t, done) {
+    t.request = request(app)
       .set('Accept-Encoding', 'gzip')
       .get('/print.css')
       .expect('Content-Encoding', 'gzip', done);
   });
 
-  it('should ignore POST requests', function (done) {
-    request(app)
+  await t.test('should ignore POST requests', function (t, done) {
+    t.request = request(app)
       .set('Accept-Encoding', 'gzip')
       .post('/print.css')
       .expect(404, done);
@@ -127,10 +131,10 @@ describe('gzipStatic', function () {
 });
 
 
-describe('gzipStatic with options', function () {
+test('gzipStatic with options', async function (t) {
   let app;
 
-  before(function () {
+  t.before(function () {
     app = connect();
     app.use(gzipStatic(fixtures, {
       index: 'print.css',
@@ -150,42 +154,46 @@ describe('gzipStatic with options', function () {
     }
   });
 
-  it('should send compressed configured index when asked for /', function (done) {
-    request(app)
+  t.afterEach(function (t, done) {
+    t.request.close(done);
+  });
+
+  await t.test('should send compressed configured index when asked for /', function (t, done) {
+    t.request = request(app)
       .get('/')
       .set('Accept-Encoding', 'gzip')
       .expect('gzip compressed', done);
   });
 
-  it('should send compressed configured index when asked for /', function (done) {
-    request(app)
+  await t.test('should send compressed configured index when asked for /', function (t, done) {
+    t.request = request(app)
       .get('/')
       .set('Accept-Encoding', 'gzip, deflate, sdch, br')
       .expect('brotli compressed', done);
   });
 
-  it('should set Content-Type for for configured index when asked for /', function (done) {
-    request(app)
+  await t.test('should set Content-Type for for configured index when asked for /', function (t, done) {
+    t.request = request(app)
       .get('/')
       .set('Accept-Encoding', 'gzip')
       .expect('Content-Type', 'text/css; charset=UTF-8', done);
   });
 
-  it('should send uncompressed print.css asked for /', function (done) {
-    request(app)
+  await t.test('should send uncompressed print.css asked for /', function (t, done) {
+    t.request = request(app)
       .get('/')
       .expect('body{color:"green";}', done);
   });
 
-  it('should set custom headers when requested', function (done) {
-    request(app)
+  await t.test('should set custom headers when requested', function (t, done) {
+    t.request = request(app)
       .get('/')
       .set('Accept-Encoding', 'gzip')
       .expect('X-Testing', 'bongo', done);
   });
 
-  it('should respect custom options', function (done) {
-    request(app)
+  await t.test('should respect custom options', function (t, done) {
+    t.request = request(app)
       .get('/')
       .set('Accept-Encoding', 'gzip')
       .end(function (res) {

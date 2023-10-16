@@ -20,7 +20,7 @@ function Request(app) {
   this.app = app;
   if (!this.server) {
     this.server = http.Server(app);
-    this.server.listen(0, function () {
+    this.server.listen(0, '0.0.0.0', function () {
       self.addr = self.server.address();
       self.listening = true;
     });
@@ -72,6 +72,7 @@ Request.prototype.expect = function (body, fn) {
         fn();
     }
   });
+  return this;
 };
 
 Request.prototype.end = function (fn) {
@@ -108,4 +109,10 @@ Request.prototype.end = function (fn) {
   }
 
   return this;
+};
+
+Request.prototype.close = function (fn) {
+  const { server } = this;
+  delete this.server;
+  return server ? server.close(fn) : fn();
 };
