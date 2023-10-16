@@ -29,7 +29,6 @@
   "devDependencies": {
     "connect": ">=2",
     "jshint": "~2",
-    "mocha": "~10",
     "should": "~13"
   },
   "files": [
