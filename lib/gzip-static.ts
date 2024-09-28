@@ -50,10 +50,7 @@ async function createMethods(root: string) {
   ];
 }
 
-export default function (
-  root: string,
-  options: Partial<ServeStaticOptions> = {},
-) {
+export default function (root: string, options: ServeStaticOptions = {}) {
   const methodsPromise = createMethods(root);
 
   options.index ||= "index.html"; // jshint ignore:line

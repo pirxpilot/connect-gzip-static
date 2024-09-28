@@ -5,8 +5,9 @@
   "main": "dist/cjs/index.js",
   "scripts": {
     "test": "make lint test",
-    "build": "yarn ts-packager -e lib",
-    "lint": "tsc --noemit && yarn eslint ./ --fix"
+    "build": "make build",
+    "lint": "make lint",
+    "format": "make format"
   },
   "repository": {
     "type": "git",
