@@ -53,7 +53,7 @@ async function createMethods(root: string) {
 export default function (root: string, options: ServeStaticOptions = {}) {
   const methodsPromise = createMethods(root);
 
-  options.index ||= "index.html"; // jshint ignore:line
+  options.index ||= "index.html";
 
   const setHeaders = options.setHeaders;
   const serveStatic = serve(root, options);
