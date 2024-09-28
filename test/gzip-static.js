@@ -24,8 +24,9 @@ void test("gzipStatic", async function (t) {
   });
 
   await t.test("should serve static files", function (t, done) {
-    t.request = request(app).get("/style.css");
-    t.request.expect('body{color:"red";}', done);
+    t.request = request(app)
+      .get("/style.css")
+      .expect('body{color:"red";}', done);
   });
 
   await t.test("should set Content-Type", function (t, done) {
