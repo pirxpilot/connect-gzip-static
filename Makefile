@@ -1,4 +1,4 @@
-check: lint test
+check: lint test build
 
 lint:
 	./node_modules/.bin/tsc --noemit && ./node_modules/.bin/eslint ./
