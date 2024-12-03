@@ -1,4 +1,9 @@
 
+4.1.0 / 2024-12-03
+==================
+
+ * relax dependencies restrictions for send to include ~1
+
 4.0.0 / 2023-10-16
 ==================
 
