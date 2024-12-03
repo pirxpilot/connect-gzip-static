@@ -93,9 +93,23 @@ test('gzipStatic', async function (t) {
       .expect('brotli compressed', done);
   });
 
+  await t.test('should serve zstd compressed files when requested gzip, brotli, and zstd', function (t, done) {
+    t.request = request(app)
+      .set('Accept-Encoding', 'zstd, gzip, br')
+      .get('/print.css')
+      .expect('zstd compressed', done);
+  });
+
   await t.test('should serve gzip compressed files when requested both gzip and brotli and only .gz is available', function (t, done) {
     t.request = request(app)
       .set('Accept-Encoding', 'gzip, br')
+      .get('/code.txt')
+      .expect('gzip code', done);
+  });
+
+  await t.test('should serve gzip compressed files when requested zstd, gzip, and brotli and only .gz is available', function (t, done) {
+    t.request = request(app)
+      .set('Accept-Encoding', 'zstd, br, gzip')
       .get('/code.txt')
       .expect('gzip code', done);
   });
