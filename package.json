@@ -24,8 +24,9 @@
   },
   "dependencies": {
     "debug": "~2||~3||~4",
+    "mime-types": "~2",
     "parseurl": "~1",
-    "send": "~0",
+    "send": "~0 || ~1",
     "serve-static": "~1"
   },
   "devDependencies": {
