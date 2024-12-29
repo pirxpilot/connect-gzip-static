@@ -52,13 +52,13 @@ Request.prototype.request = function (method, path) {
   return this;
 };
 
-Request.prototype.expect = function (body, fn) {
-  const args = arguments;
+Request.prototype.expect = function (body, ...args) {
+  const fn = args.pop();
   this.end(function (res) {
     switch (args.length) {
-      case 3:
-        assert.equal(res.headers[body.toLowerCase()], args[1]);
-        args[2]();
+      case 1:
+        const header = res.headers[body.toLowerCase()];
+        assert.equal(header.toLowerCase(), args[0].toLowerCase());
         break;
       default:
         if ('number' == typeof body) {
@@ -66,8 +66,8 @@ Request.prototype.expect = function (body, fn) {
         } else {
           assert.deepEqual(res.body, body);
         }
-        fn();
     }
+    fn();
   });
   return this;
 };
