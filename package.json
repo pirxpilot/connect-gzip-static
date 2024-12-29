@@ -27,12 +27,11 @@
     "mime-types": "~2",
     "parseurl": "~1",
     "send": "~0 || ~1",
-    "serve-static": "~1"
+    "serve-static": "~1 || ~2"
   },
   "devDependencies": {
     "@pirxpilot/jshint": "^3.0.1",
-    "connect": ">=2",
-    "should": "~13"
+    "connect": ">=2"
   },
   "files": [
     "index.js",

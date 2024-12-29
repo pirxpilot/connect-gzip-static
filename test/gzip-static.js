@@ -1,4 +1,5 @@
 const test = require('node:test');
+const assert = require('node:assert/strict');
 
 const gzipStatic = require('..');
 
@@ -67,8 +68,8 @@ test('gzipStatic', async function (t) {
       .get('/print.css')
       .set('Accept-Encoding', 'gzip')
       .end(function (res) {
-        res.headers.should.have.property('etag');
-        res.headers.should.have.property('last-modified');
+        assert.ok('etag' in res.headers);
+        assert.ok('last-modified' in res.headers);
         done();
       });
   });
@@ -211,9 +212,9 @@ test('gzipStatic with options', async function (t) {
       .get('/')
       .set('Accept-Encoding', 'gzip')
       .end(function (res) {
-        res.headers.should.not.have.property('etag');
-        res.headers.should.not.have.property('last-modified');
-        res.headers.should.not.have.property('cache-control');
+        assert.equal('etag' in res.headers, false);
+        assert.equal('last-modified' in res.headers, false);
+        assert.equal('cache-control' in res.headers, false);
         done();
       });
   });
