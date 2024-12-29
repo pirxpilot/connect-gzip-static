@@ -1,6 +1,6 @@
 {
   "name": "connect-gzip-static",
-  "version": "4.2.0",
+  "version": "4.2.1",
   "description": "gzip/brotli static middleware for connect - serves compressed files if they exist, falls through to connect-static if they don't",
   "main": "index.js",
   "scripts": {

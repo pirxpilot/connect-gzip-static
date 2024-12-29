@@ -1,4 +1,12 @@
 
+4.2.1 / 2024-12-29
+==================
+
+ * optimize file cache creation
+ * simplify check function
+ * relax serve-static dependency
+ * replace should with built-in node:assert
+
 4.2.0 / 2024-12-03
 ==================
 
