@@ -31,8 +31,7 @@
   },
   "devDependencies": {
     "@pirxpilot/jshint": "^3.0.1",
-    "connect": ">=2",
-    "should": "~13"
+    "connect": ">=2"
   },
   "files": [
     "index.js",

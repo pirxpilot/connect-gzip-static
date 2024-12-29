@@ -1,8 +1,5 @@
-/**
- * Module dependencies.
- */
-
-const EventEmitter = require('events').EventEmitter;
+const assert = require('node:assert/strict');
+const { EventEmitter } = require('events');
 
 const methods = ['get', 'post', 'put', 'delete', 'head'];
 const http = require('http');
@@ -60,14 +57,14 @@ Request.prototype.expect = function (body, fn) {
   this.end(function (res) {
     switch (args.length) {
       case 3:
-        res.headers.should.have.property(body.toLowerCase(), args[1]);
+        assert.equal(res.headers[body.toLowerCase()], args[1]);
         args[2]();
         break;
       default:
         if ('number' == typeof body) {
-          res.statusCode.should.equal(body);
+          assert.equal(res.statusCode, body);
         } else {
-          res.body.should.equal(body);
+          assert.deepEqual(res.body, body);
         }
         fn();
     }
