@@ -30,7 +30,7 @@
     "serve-static": "~1 || ~2"
   },
   "devDependencies": {
-    "@pirxpilot/jshint": "^3.0.1",
+    "@biomejs/biome": "^1.9.4",
     "connect": ">=2"
   },
   "files": [
