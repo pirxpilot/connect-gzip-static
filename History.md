@@ -1,4 +1,11 @@
 
+4.2.2 / 2025-05-18
+==================
+
+ * upgrade `mime-types` to ~3
+ * remove functionally empty index.js
+ * use `biome` as a linter and formatter
+
 4.2.1 / 2024-12-29
 ==================
 
