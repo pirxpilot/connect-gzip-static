@@ -1,7 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 
-const gzipStatic = require('..');
+const gzipStatic = require('../lib/gzip-static');
 
 const connect = require('connect');
 const request = require('./support/http');
