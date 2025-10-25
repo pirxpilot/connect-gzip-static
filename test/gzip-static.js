@@ -1,12 +1,10 @@
-const test = require('node:test');
-const assert = require('node:assert/strict');
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import connect from '@pirxpilot/connect';
+import gzipStatic from '../lib/gzip-static.js';
+import request from './support/http.js';
 
-const gzipStatic = require('../lib/gzip-static');
-
-const connect = require('@pirxpilot/connect');
-const request = require('./support/http');
-
-const fixtures = `${__dirname}/fixtures`;
+const fixtures = `${import.meta.dirname}/fixtures`;
 
 test('gzipStatic', async t => {
   let app;

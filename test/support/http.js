@@ -1,12 +1,10 @@
-const assert = require('node:assert/strict');
-const { EventEmitter } = require('node:events');
+import assert from 'node:assert/strict';
+import { EventEmitter } from 'node:events';
+import http from 'node:http';
 
 const methods = ['get', 'post', 'put', 'delete', 'head'];
-const http = require('node:http');
 
-module.exports = request;
-
-function request(app) {
+export default function request(app) {
   return new Request(app);
 }
 

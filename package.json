@@ -3,6 +3,7 @@
   "version": "4.2.2",
   "description": "gzip/brotli static middleware for connect - serves compressed files if they exist, falls through to connect-static if they don't",
   "exports": "./lib/gzip-static.js",
+  "type": "module",
   "scripts": {
     "test": "make check"
   },
@@ -20,7 +21,7 @@
   "author": "Damian Krzeminski <pirxpilot@furkot.com>",
   "license": "MIT",
   "engines": {
-    "node": ">= 20.1.0"
+    "node": ">= 22"
   },
   "dependencies": {
     "debug": "~4",
@@ -34,7 +35,6 @@
     "@pirxpilot/connect": "~4"
   },
   "files": [
-    "index.js",
     "lib"
   ]
 }
