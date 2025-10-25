@@ -1,4 +1,12 @@
 
+5.0.0 / 2025-10-25
+==================
+
+ * transition to ESM format
+ * upgrade `biome` to 2.3.0
+ * update github actions
+ * use `@pirxpilot/connect` in tests
+
 4.2.2 / 2025-05-18
 ==================
 
