@@ -4,7 +4,7 @@
   "description": "gzip/brotli static middleware for connect - serves compressed files if they exist, falls through to connect-static if they don't",
   "exports": "./lib/gzip-static.js",
   "scripts": {
-    "test": "make lint test"
+    "test": "make check"
   },
   "repository": {
     "type": "git",
@@ -23,14 +23,14 @@
     "node": ">= 20.1.0"
   },
   "dependencies": {
-    "debug": "~2||~3||~4",
+    "debug": "~4",
     "mime-types": "~2||~3",
     "parseurl": "~1",
     "send": "~0 || ~1",
     "serve-static": "~1 || ~2"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.4",
+    "@biomejs/biome": "2.3.0",
     "@pirxpilot/connect": "~4"
   },
   "files": [
